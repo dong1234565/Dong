@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>东的个人网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        /* 导航栏 */
+        nav {
+            width: 100%;
+            height: 60px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+        }
+        .logo {
+            color: #fff;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .nav-link a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .nav-link a:hover {
+            color: #409eff;
+        }
+        /* 首页横幅 */
+        .banner {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, #409eff, #66b1ff);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .banner h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .banner p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .btn {
+            padding: 12px 36px;
+            background: #fff;
+            color: #409eff;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background: transparent;
+            border: 2px solid #fff;
+            color: #fff;
+        }
+        /* 通用区块 */
+        section {
+            padding: 80px 5%;
+        }
+        .title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+        /* 关于我们 */
+        .about-box {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .about-img {
+            width: 50%;
+            height: 350px;
+            background: #eee;
+            border-radius: 8px;
+        }
+        .about-text h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #222;
+        }
+        .about-text p {
+            line-height: 1.8;
+            color: #666;
+            font-size: 16px;
+        }
+        /* 服务板块 */
+        .service-wrap {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-item {
+            flex: 1;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            text-align: center;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .service-item:hover {
+            background: #409eff;
+            color: white;
+        }
+        .service-item h4 {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        /* 下载板块样式新增 */
+        #download {
+            background: #f0f7ff;
+        }
+        .download-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .download-card {
+            width: 300px;
+            background: #fff;
+            padding: 40px 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #d6e4f5;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .download-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px #c2d8f0;
+        }
+        .download-card h4 {
+            font-size: 20px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+        .download-card p {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        .download-btn {
+            display: inline-block;
+            padding: 10px 28px;
+            background: #409eff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .download-btn:hover {
+            background: #2b86d8;
+        }
+        /* 留言表单 */
+        .msg-box {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        input, textarea {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #409eff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .submit-btn:hover {
+            background: #337ecc;
+        }
+        /* 页脚 */
+        footer {
+            width: 100%;
+            padding: 30px;
+            background: #222;
+            color: #aaa;
+            text-align: center;
+        }
+        /* 手机适配 */
+        @media(max-width:768px) {
+            .nav-link a {
+                margin-left: 10px;
+                font-size: 14px;
+            }
+            .banner h1 {
+                font-size: 32px;
+            }
+            .about-box, .service-wrap {
+                flex-direction: column;
+            }
+            .about-img {
+                width: 100%;
+            }
+            .download-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航（新增下载导航项） -->
+    <nav>
+        <div class="logo">个人站点</div>
+        <div class="nav-link">
+            <a href="#home">首页</a>
+            <a href="#about">关于</a>
+            <a href="#service">服务</a>
+            <a href="#download">资源下载</a>
+            <a href="#message">留言</a>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <div class="banner" id="home">
+        <h1>欢迎来到我的网站</h1>
+        <p>专注Scratch turbowarp游戏设计、程序开发、游戏资源分享下载</p>
+        <a href="#download" class="btn">前往资源下载</a>
+    </div>
+
+    <!-- 关于板块 -->
+    <section id="about">
+        <h2 class="title">关于我们</h2>
+        <div class="about-box">
+            <div class="about-img"></div>
+            <div class="about-text">
+                <h3>专业制作游戏&资源分享</h3>
+                <p>我们拥有多年游戏开发经验，可搭建Scratch turbowork Python c++小游戏，同时分享工具资源，提供多渠道下载方式，代码简洁、仅电脑适配。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务板块 -->
+    <section id="service" style="background:#f8f9fa;">
+        <h2 class="title">我们的服务</h2>
+        <div class="service-wrap">
+            <div class="service-item">
+                <h4>游戏搭建</h4>
+                <p>公司展示、产品介绍、新闻动态、联系我们一体化页面</p>
+            </div>
+            <div class="service-item">
+                <h4>个人游戏制作</h4>
+                <p>游戏发布、分类下载、简洁清爽游戏界面</p>
+            </div>
+            <div class="service-item">
+                <h4>页面定制开发</h4>
+                <p>交互特效、响应式适配、代码优化</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新增：资源下载区域（三个下载卡片） -->
+    <section id="download">
+        <h2 class="title">资源下载渠道</h2>
+        <div class="download-wrap">
+            <!-- 1.虚拟机游戏下载 -->
+            <div class="download-card">
+                <h4>虚拟机游戏包</h4>
+                <p>完整虚拟机镜像，内置整合游戏，导入VMware即可直接运行</p>
+                <a href="#" class="download-btn">虚拟机下载</a>
+            </div>
+            <!-- 2.浏览器本地直下 -->
+            <div class="download-card">
+                <h4>浏览器本地直下</h4>
+                <p>HTTP直链，浏览器一键本地保存，无需第三方客户端</p>
+                <a href="#" class="download-btn">本地直接下载</a>
+            </div>
+            <!-- 3.百度网盘下载 -->
+            <div class="download-card">
+                <h4>百度网盘资源</h4>
+                <p>大容量压缩包，长期保存，支持在线解压、高速下载</p>
+                <a href="#" class="download-btn">网盘跳转下载</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 留言板块 -->
+    <section id="message">
+        <h2 class="title">在线留言</h2>
+        <div class="msg-box">
+            <input type="text" placeholder="请输入您的姓名">
+            <input type="tel" placeholder="请输入联系电话">
+            <textarea placeholder="需要什么资源、遇到下载问题都可以留言"></textarea>
+            <input class="submit-btn" type="button" value="提交留言" onclick="alert('留言提交成功！')">
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>© 2026 个人网站 版权所有 | 资源仅供个人学习使用</p>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({behavior: 'smooth'});
+            })
+        })
+    </script>
+</body>
+</html>
